@@ -23,7 +23,10 @@ Handle<Value> Method(const Arguments& args) {
   HandleScope scope;
   //int prime = nextPrime(10);
   //int max = 200000;
-  int max = 100;
+  Local<Integer> val = Local<Integer>::Cast(args[0]);
+  int max = (int)(val->Int32Value());
+  //Local<Number> num = args[0]->NumberValue();
+  //int max = (int) args[0];
   char strarr[max*4];
   char *str = strarr;
   int primes[max];  

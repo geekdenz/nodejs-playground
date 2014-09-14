@@ -1,12 +1,15 @@
 #include <node.h>
 #include <v8.h>
+#include <math.h>
 
 using namespace v8;
 
 int nextPrime(int smallerThan) {
   for (;--smallerThan;) {
-    int divides = false;
-    for (int i = 1; ++i < smallerThan;) { // sqrt and maybe skipping even numbers would be a reasonable optimisation!
+    int root = (int) sqrt((double)smallerThan);
+    int divides = !(smallerThan % 2) && smallerThan != 2;   
+    for (int i = 1; ++i <= root;) {
+      ++i;
       if (!(smallerThan % i)) { // i divides smallerThan
         divides = true;
         break;

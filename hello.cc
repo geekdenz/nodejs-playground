@@ -7,7 +7,7 @@ using namespace v8;
 int nextPrime(int smallerThan) {
   for (;--smallerThan;) {
     int root = (int) sqrt((double)smallerThan);
-    int divides = !(smallerThan % 2) && smallerThan != 2;   
+    int divides = smallerThan != 2 && !(smallerThan % 2); // divides if not 2 and divisible by 2
     for (int i = 1; ++i <= root;) {
       ++i;
       if (!(smallerThan % i)) { // i divides smallerThan
